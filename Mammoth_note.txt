@@ -1,0 +1,8 @@
+Git command:
+git checkout {another branch}
+git checkout -b {new branch}
+
+git add .
+git commit -m "comment"
+git push -u origin {branch}
+git push
