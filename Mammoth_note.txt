@@ -6,3 +6,6 @@ git add .
 git commit -m "comment"
 git push -u origin {branch}
 git push
+
+npm run start:dev #run backend http://localhost:3000/
+npm start #run frontend http://localhost:2000/

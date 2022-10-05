@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+body { 
+  background-image: url("../../document_n_other/E7A7F914-2531-4B9C-B67B-83FFC5446AA8 3.png"); 
+  background-color: rgba(255, 255, 255, 0.848);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +42,68 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.series-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
+.series-item img {
+  width: 100%;
+}
+
+.GoogleLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  font-size: 32px;
+}
+
+.CycleGraph {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.predict {
+  background-color: rgb(255, 220, 220);
+}
+
+.center {
+  margin: auto;
+}
+
+.tab1 {
+  margin-left: 1%;
+}
+
+.tab2 {
+  margin-left: 2%;
+}
+
+.tab4 {
+  margin-left: 4%;
+}
+
+.tab40 {
+  margin-left: 40%;
+}
+
+.EventMenuGrid {
+  display: block;
+  margin-top: 25%;
+  margin-bottom: auto;
+  margin-left: 95%;
+  margin-right: auto;
+}
+
+.GraphAndEventTable {
+  display: block;
+  margin-left: 15%;
+  margin-right: auto;
 }

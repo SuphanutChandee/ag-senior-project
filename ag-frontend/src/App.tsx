@@ -1,26 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MainPage from './components/MainPage';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MainPage />
     </div>
   );
 }
 
 export default App;
+
+/*
+import React, { useState } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import { SeriesProps } from './interfaces/SeriesProps';
+import Form from './components/Form'
+import List from './components/List'
+
+function App() {
+
+  const [seriesList, setSeriesList] = useState<SeriesProps["seriesList"]>([]);
+
+  return (
+    <div className="App">
+      <h1>My Favorite TV Series</h1>
+      <Form seriesList={seriesList} setSeriesList={setSeriesList} />
+      <List seriesList={seriesList} />
+    </div>
+  );
+}
+
+export default App;
+*/
+
