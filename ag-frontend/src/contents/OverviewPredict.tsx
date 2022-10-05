@@ -1,50 +1,41 @@
-import { FC, ChangeEvent, MouseEvent, useState, Dispatch, SetStateAction } from 'react'
-import { OverviewPredictProps } from '../interfaces/OverviewProps'
-import React from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
 
-type OverviewPredictList = {
-  date: string;
-  name: string;
-  type: string;
-  details: string;
-  other: string;
-  chance: string;
-};
+const OverviewPredict = () => {
+  const [OverviewPredictList, setOverviewPredictList] = useState([{
+    date: "",
+    name: "",
+    type: "",
+    details: "",
+    other: "",
+    chance: ""
+  }]);
 
-class OverviewPredict extends React.Component<{}, OverviewPredictList> {
-  state: OverviewPredictList = {
-    date: "Defult message",
-    name: "Defult message",
-    type: "Defult message",
-    details: "Defult message",
-    other: "Defult message",
-    chance: "Defult message"
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      // get the data from the api
+      const data = await fetch('http://localhost:3000/OverviewPredictList');
+      // convert the data to json
+      const json = await data.json();
+  
+      // set state with the result
+      setOverviewPredictList(json);
+    }
+    fetchData();
+    console.log(OverviewPredictList)
+  },[]);
 
-  componentDidMount() {
-    fetch('http://localhost:3000/OverviewPredictList')
-      .then(res => res.json())
-      .then(obj => {
-        this.setState({
-          date: obj.date,
-          name: obj.name,
-          type: obj.type,
-          details: obj.details,
-          other: obj.other,
-          chance: obj.chance
-        })
-      })
-  }
-
-  render() {
-    return (
-      <div>
-        <h2 className='tab2'>สาเหตุที่คาดการ</h2>
-        <h2 className='tab4'>{this.state.date} : {this.state.name} : “{this.state.type}” : {this.state.details} : {this.state.other} (โอกาส{this.state.chance})</h2>
-      </div>
-    );
-  }
-}
+  return (
+  <div className='predict'>
+    <h2 className='tab2'>สาเหตุที่คาดการ</h2>
+    <div className="series-list">
+    {OverviewPredictList.map((OverviewPredict, idx) => (
+        <div key={idx} className="series-item">
+            <h2 className='tab4'>{OverviewPredict.date} : {OverviewPredict.name} : "{OverviewPredict.type}" : {OverviewPredict.details} : {OverviewPredict.other} (โอกาส{OverviewPredict.chance})</h2>
+        </div>
+    ))}
+    </div>
+  </div>
+)}
 
 export default OverviewPredict
 
@@ -113,6 +104,58 @@ const OverviewPredict: FC<Props> = ({ OverviewPredictList, setOverviewPredictLis
     <h2 className='tab4'>โรคติดต่อ (โอกาสปานกลาง)</h2>
   </div>
 )}
+
+export default OverviewPredict
+*/
+
+/*
+import { FC, ChangeEvent, MouseEvent, useState, Dispatch, SetStateAction } from 'react'
+import { OverviewPredictProps } from '../interfaces/OverviewProps'
+import React from 'react'
+
+type OverviewPredictList = {
+  date: string;
+  name: string;
+  type: string;
+  details: string;
+  other: string;
+  chance: string;
+};
+
+class OverviewPredict extends React.Component<{}, OverviewPredictList> {
+  state: OverviewPredictList = {
+    date: "Defult message",
+    name: "Defult message",
+    type: "Defult message",
+    details: "Defult message",
+    other: "Defult message",
+    chance: "Defult message"
+  };
+
+  componentDidMount() {
+    fetch('http://localhost:3000/OverviewPredictList')
+      .then(res => res.json())
+      .then(obj => {
+        this.setState({
+          date: obj.date,
+          name: obj.name,
+          type: obj.type,
+          details: obj.details,
+          other: obj.other,
+          chance: obj.chance
+        })
+      })
+  }
+
+  render() {
+    return (
+      <div>
+        <h2 className='tab2'>สาเหตุที่คาดการ</h2>
+        <h2 className='tab4'>{this.state.date} : {this.state.name} : “{this.state.type}” : {this.state.details} : {this.state.other} (โอกาส{this.state.chance})</h2>
+      </div>
+    );
+  }
+}
 
 export default OverviewPredict
 */
