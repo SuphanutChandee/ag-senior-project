@@ -1,13 +1,14 @@
 import { SetStateAction, useEffect, useState } from 'react'
 
 const OverviewPredict = () => {
-  const [OverviewPredictList, setOverviewPredictList] = useState([{
+  const [overviewPredictList, setOverviewPredictList] = useState([{
     date: "",
     name: "",
     type: "",
     details: "",
     other: "",
-    chance: ""
+    chance: "",
+    color: "",
   }]);
 
   useEffect(() => {
@@ -21,16 +22,18 @@ const OverviewPredict = () => {
       setOverviewPredictList(json);
     }
     fetchData();
-    console.log(OverviewPredictList)
+    /*console.log(OverviewPredictList)*/
   },[]);
 
   return (
   <div className='predict'>
     <h2 className='tab2'>สาเหตุที่คาดการ</h2>
-    <div className="series-list">
-    {OverviewPredictList.map((OverviewPredict, idx) => (
-        <div key={idx} className="series-item">
-            <h2 className='tab4'>{OverviewPredict.date} : {OverviewPredict.name} : "{OverviewPredict.type}" : {OverviewPredict.details} : {OverviewPredict.other} (โอกาส{OverviewPredict.chance})</h2>
+    <div>
+    {overviewPredictList.map((overviewPredict, idx) => (
+        <div key={idx} className="centerDivMorePadding">
+            <form action="/activity">
+            <button className={overviewPredict.color}><h2 className='tab4'>{overviewPredict.date} : {overviewPredict.name} : "{overviewPredict.type}" : {overviewPredict.details} ({overviewPredict.chance})</h2></button>
+            </form>
         </div>
     ))}
     </div>
@@ -39,7 +42,7 @@ const OverviewPredict = () => {
 
 export default OverviewPredict
 
-
+//<button type="button" className={OverviewPredict.chance}><h2 className='tab4'>{OverviewPredict.date} : {OverviewPredict.name} : "{OverviewPredict.type}" : {OverviewPredict.details} : {OverviewPredict.other} ({OverviewPredict.chance})</h2></button>
 
 /*
 import { FC, ChangeEvent, MouseEvent, useState, Dispatch, SetStateAction } from 'react'

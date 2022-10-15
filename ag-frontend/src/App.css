@@ -4,7 +4,7 @@
 
 body { 
   background-image: url("../../document_n_other/E7A7F914-2531-4B9C-B67B-83FFC5446AA8 3.png"); 
-  background-color: rgba(255, 255, 255, 0.848);
+  background-color: rgba(217, 217, 217, 0.7);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -71,7 +71,8 @@ body {
 }
 
 .predict {
-  background-color: rgb(255, 220, 220);
+  background-color: rgba(249, 231, 230, 0.5);
+  padding: 0.5%;
 }
 
 .center {
@@ -94,16 +95,114 @@ body {
   margin-left: 40%;
 }
 
-.EventMenuGrid {
-  display: block;
-  margin-top: 25%;
-  margin-bottom: auto;
-  margin-left: 95%;
-  margin-right: auto;
+.เขียว {
+  background-color: rgba(27, 158, 119, 0.3);
+  width: 98%;
+  border: none;
+  color: black;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.GraphAndEventTable {
+.เหลือง {
+  background-color: rgba(213, 217, 2, 0.3);
+  width: 98%;
+  border: none;
+  color: black;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ฟ้า {
+  background-color: rgba(192, 216, 255, 0.3);
+  width: 98%;
+  border: none;
+  color: black;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.แดง {
+  background-color: rgba(231, 41, 138, 0.3);
+  width: 98%;
+  border: none;
+  color: black;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.centerDiv {
   display: block;
-  margin-left: 15%;
-  margin-right: auto;
+  justify-content: center;
+  padding: 1px;
+}
+
+.centerDivMorePadding {
+  display: block;
+  justify-content: center;
+  padding: 5px;
+}
+
+.OverviewHouses{
+  background-color: rgba(217, 217, 217, 0.7);
+  padding: 0.5%;
+}
+
+.EventSchedule {
+  position: fixed;
+  border-radius: 50%;
+  bottom: 19%;
+  right: 3%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: block;
+  max-width: 13%;
+  max-height: 13%;
+}
+
+.EventCreate {
+  position: fixed;
+  border-radius: 50%;
+  bottom: 5%;
+  right: 3%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: block;
+  max-width: 13%;
+  max-height: 13%;
+}
+
+.Addunit {
+  border-radius: 50%;
+  display: block;
+  max-width: 37px;
+  max-height: 37px;
+  padding: 2px;
+  margin-left: 50%;
+}
+
+.ActivityBar {
+  background-color: rgba(112, 127, 179, 0.3);
+  width: 98%;
+  border: none;
+  color: black;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ย้อนกลับ {
+  position: fixed;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: block;
+  bottom: 5%;
+  margin-left: 45%;
+  font-size: 24px;
 }

@@ -1,13 +1,13 @@
 import React, { FC, useState } from 'react'
-import OverviewHeader from "../contents/OverviewHeader"
-import OverviewGraphAndEventTable from "../contents/OverviewGraphAndEventTable"
-import OverviewPredict from "../contents/OverviewPredict"
-import OverviewGoatHouses from "../contents/OverviewGoatHouses"
+import OverviewHeader from "../components/OverviewHeader"
+import OverviewChart from "../components/OverviewChart"
+import OverviewPredict from "../components/OverviewPredict"
+import OverviewGoatHouses from "../components/OverviewGoatHouses"
 import { OverviewPredictProps } from '../interfaces/OverviewProps'
+import EventCreate from "../img/CreateEventIcon.png"
+import EventSchedule from "../img/EventSchedule.png"
 
 function MainPage () {
-
-    const [OverviewPredictList, setOverviewPredictList] = useState<OverviewPredictProps["OverviewPredictList"]>([]);
 
     return (
         <div>
@@ -15,21 +15,27 @@ function MainPage () {
                 <OverviewHeader />
             </div>
             <div>
-                <OverviewGraphAndEventTable />
+                <OverviewChart />
             </div> 
             <div>
-            {/*<OverviewPredict OverviewPredictList={OverviewPredictList} setOverviewPredictList={setOverviewPredictList} />*/}
-            <OverviewPredict />
+                <OverviewPredict />
             </div>
             <div>
                 <OverviewGoatHouses />
             </div>
+            <form action="/activity">
+                <input type="image" src={EventSchedule} className='EventSchedule'/>
+            </form>
+            <input type="image" src={EventCreate} className='EventCreate'/>
         </div>
     )
 }
 
 export default MainPage
-
+/*
+            <button className='EventSchedule'><img src={EventSchedule} /></button>
+            <button className='EventCreate'><img src={EventCreate} /></button>
+*/
 
 
 /*
