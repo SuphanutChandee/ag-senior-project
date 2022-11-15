@@ -6,7 +6,11 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NoPage from "./page/NoPage";
 import TempPage from './page/TempPage';
-import ActivityPage from './page/ActivityPage';
+import EventPage from './page/EventPage';
+import NewGoatPage from './page/NewGoatPage'
+import NewEventPage from './page/NewEventPage';
+import GoatReportPage from './page/GoatReportPage';
+import EditGoatPage from './page/EditGoatPage';
 
 function App() {
 
@@ -15,8 +19,12 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />}/>
         <Route path="temp" element={<TempPage />}/>
-        <Route path="activity" element={<ActivityPage />}/>
-
+        <Route path="Event" element={<EventPage />}/>
+        <Route path="newgoat" element={<NewGoatPage />}/>
+        <Route path="newevent" element={<NewEventPage />}/>
+        <Route path="goat/*" element={<GoatReportPage />}/>
+        <Route path="editgoat/*" element={<EditGoatPage />}/>
+        
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

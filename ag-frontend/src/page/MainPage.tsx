@@ -23,10 +23,12 @@ function MainPage () {
             <div>
                 <OverviewGoatHouses />
             </div>
-            <form action="/activity">
+            <form action="/Event">
                 <input type="image" src={EventSchedule} className='EventSchedule'/>
             </form>
-            <input type="image" src={EventCreate} className='EventCreate'/>
+            <form action="/newevent">
+                <input type="image" src={EventCreate} className='EventCreate'/>
+            </form>
         </div>
     )
 }

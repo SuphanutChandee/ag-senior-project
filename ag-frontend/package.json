@@ -12,7 +12,8 @@
     "@types/node": "^16.11.59",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
-    "antd": "^4.23.5",
+    "antd": "^4.24.1",
+    "jquery": "^3.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.14",
     "react-router-dom": "^6.4.2"
   }
 }

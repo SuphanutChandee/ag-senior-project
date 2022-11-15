@@ -3,8 +3,8 @@
 }
 
 body { 
-  background-image: url("../../document_n_other/E7A7F914-2531-4B9C-B67B-83FFC5446AA8 3.png"); 
-  background-color: rgba(217, 217, 217, 0.7);
+  /*background-image: url("../../document_n_other/E7A7F914-2531-4B9C-B67B-83FFC5446AA8 3.png"); */
+  background-color: rgb(232, 248, 251);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -70,6 +70,15 @@ body {
   width: 100%;
 }
 
+
+.MockedUPGraph {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90%;
+  max-height: 90%;
+}
+
 .predict {
   background-color: rgba(249, 231, 230, 0.5);
   padding: 0.5%;
@@ -95,8 +104,41 @@ body {
   margin-left: 40%;
 }
 
+.section {
+  width: 100%;
+  margin-left: 4%;
+  display: grid;
+  grid-template-columns: 15% 5% 80%;
+}
+
+.inputText {
+  max-width: 90%;
+  font-size: 24px;
+}
+
+.textBackground {
+  max-width: 90%;
+  font-size: 24px;
+  background-color: white;
+  border: black;
+}
+
+.MultiSelecTextBackground {
+  max-height: 80%;
+  opacity: 1;
+  overflow-y: scroll;
+  max-width: 90%;
+  font-size: 24px;
+  background-color: white;
+  border: black;
+}
+
+.choice {
+  font-size: 24px;
+}
+
 .เขียว {
-  background-color: rgba(27, 158, 119, 0.3);
+  background-color: #4CAF50;
   width: 98%;
   border: none;
   color: black;
@@ -107,7 +149,7 @@ body {
 }
 
 .เหลือง {
-  background-color: rgba(213, 217, 2, 0.3);
+  background-color: #a7af4c;
   width: 98%;
   border: none;
   color: black;
@@ -118,7 +160,7 @@ body {
 }
 
 .ฟ้า {
-  background-color: rgba(192, 216, 255, 0.3);
+  background-color: #008CBA;
   width: 98%;
   border: none;
   color: black;
@@ -129,7 +171,7 @@ body {
 }
 
 .แดง {
-  background-color: rgba(231, 41, 138, 0.3);
+  background-color: #f44336;
   width: 98%;
   border: none;
   color: black;
@@ -188,7 +230,7 @@ body {
 }
 
 .ActivityBar {
-  background-color: rgba(112, 127, 179, 0.3);
+  background-color: #11c2b6c0;
   width: 98%;
   border: none;
   color: black;
@@ -199,10 +241,91 @@ body {
 }
 
 .ย้อนกลับ {
+  background-color: rgb(244, 252, 255);
+  cursor: pointer;
+  border: none;
   position: fixed;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   display: block;
-  bottom: 5%;
-  margin-left: 45%;
+  bottom: 92%;
+  margin-left: 88%;
   font-size: 24px;
+}
+
+.แก้ไขข้อมูลแพะ {
+  background-color: rgb(244, 252, 255);
+  cursor: pointer;
+  border: none;
+  position: fixed;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: block;
+  bottom: 85%;
+  margin-left: 88%;
+  font-size: 24px;
+}
+
+.gridSubThree {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.ยืนยันแล้วเพิ่ม {
+  background-color: rgb(244, 252, 255);
+  cursor: pointer;
+  border: none;
+  position: block;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: block;
+  font-size: 24px;
+  margin: auto;
+}
+.ยืนยันแล้วกลับหน้าหลัก {
+  background-color: rgb(244, 252, 255);
+  cursor: pointer;
+  border: none;
+  position: block;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: block;
+  font-size: 24px;
+  margin: auto;
+}
+.ยกเลิกแล้วกลับหน้าหลัก {
+  background-color: rgb(244, 252, 255);
+  cursor: pointer;
+  border: none;
+  position: block;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: block;
+  font-size: 24px;
+  margin: auto;
+}
+
+
+.select {
+  max-width: 90%;
+}
+
+.select option {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.color {
+  padding: 6px 30px;
+  margin: 10px;
+  background: orange;
+  display: inline-block;
+  border-radius: 100px;
+}
+
+.container {
+  box-sizing: border-box;
+  margin: 30px auto;
+  padding: 30px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
 }

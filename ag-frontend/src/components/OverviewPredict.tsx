@@ -22,8 +22,10 @@ const OverviewPredict = () => {
       setOverviewPredictList(json);
     }
     fetchData();
-    /*console.log(OverviewPredictList)*/
+    
   },[]);
+
+  //console.log(overviewPredictList)
 
   return (
   <div className='predict'>
@@ -31,7 +33,7 @@ const OverviewPredict = () => {
     <div>
     {overviewPredictList.map((overviewPredict, idx) => (
         <div key={idx} className="centerDivMorePadding">
-            <form action="/activity">
+            <form action="/Event">
             <button className={overviewPredict.color}><h2 className='tab4'>{overviewPredict.date} : {overviewPredict.name} : "{overviewPredict.type}" : {overviewPredict.details} ({overviewPredict.chance})</h2></button>
             </form>
         </div>
