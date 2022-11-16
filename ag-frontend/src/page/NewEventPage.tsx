@@ -5,7 +5,10 @@ function NewEventPage () {
 
     // This holds the selected values
     const [colors, setColors] = useState<String[]>();
-    const [allGoatsNum, setAllGoatsNum] = useState([""])
+    const [allGoatsNum, setAllGoatsNum] = useState([{
+        _id: "",
+        value: ""
+    }])
 
     // Handle the onChange event of the select
     const onChangeHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -29,7 +32,7 @@ function NewEventPage () {
         fetchData();
     },[]);
 
-    //console.log(AllGoatsNum)
+    console.log(allGoatsNum)
 
     return (
         <div>
@@ -66,8 +69,8 @@ function NewEventPage () {
                 <div className="MultiSelecTextBackground">
                     {allGoatsNum.map((allGoatsNum, idx) => (
                         <div>
-                            <input key={idx} id={allGoatsNum} name={allGoatsNum} type="checkbox"/>
-                            <label className="inputText" htmlFor={allGoatsNum}>{allGoatsNum}</label>
+                            <input key={idx} id={allGoatsNum.value} name={allGoatsNum.value} type="checkbox"/>
+                            <label className="inputText" htmlFor={allGoatsNum.value}>{allGoatsNum.value}</label>
                         </div>
                     ))}
                 </div>

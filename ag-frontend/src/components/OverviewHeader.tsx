@@ -2,39 +2,45 @@ import React, { useState, useEffect } from 'react'
 
 const OverviewHeader = () => {
 
-  const [total, setTotal] = useState(0);
-  const [abnormaly, setAbnormaly] = useState("");
-  const [total_ab, setTotal_ab] = useState(0);
-  const [ablv0, setAbLv0] = useState(0);
-  const [ablv1, setAbLv1] = useState(0);
-  const [ablv2, setAbLv2] = useState(0);
-  const [ablv3, setAbLv3] = useState(0);
+  const [overviewHeaderList, setOverviewHeaderList] = useState([{
+    total: 0,
+    abnormaly: "",
+    total_ab: 0,
+    ablv0: 0,
+    ablv1: 0,
+    ablv2: 0,
+    ablv3: 0
+  }]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/OverviewHeaderList')
-      .then(res => res.json())
-      .then(obj => {
-        setTotal(obj.total)
-        setAbnormaly(obj.abnormaly)
-        setTotal_ab(obj.total_ab)
-        setAbLv0(obj.ablv0)
-        setAbLv1(obj.ablv1)
-        setAbLv2(obj.ablv2)
-        setAbLv3(obj.ablv3)
-      });
+    const fetchData = async () => {
+      // get the data from the api
+      const data = await fetch('http://localhost:3000/OverviewHeaderList');
+      // convert the data to json
+      const json = await data.json();
+      // set state with the result
+      setOverviewHeaderList(json);
+    }
+    fetchData();
   },[]);
 
   return (
   <div>
-    <h1 className='tab1'>ประชากรแพะรวม : {total} ตัว (อาการผิดปกติในภาพรวม : {abnormaly})</h1>
-    <h2 className='tab1'>แพะที่มีความผิดปกติคิดเป็น {total_ab}% ของประชากรทั้งหมด แบ่งได้เป็น : ปกติ {ablv0}% : เล็กน้อย {ablv1}% : ปานกลาง {ablv2}% : รุนแรง {ablv3}% </h2>
-
-
+    {overviewHeaderList.map((overviewHeader, idx) => (
+      <div>
+        <h1 className='tab1'>ประชากรแพะรวม : {overviewHeader.total} ตัว (อาการผิดปกติในภาพรวม : {overviewHeader.abnormaly})</h1>
+        <h2 className='tab1'>แพะที่มีความผิดปกติคิดเป็น {overviewHeader.total_ab}% ของประชากรทั้งหมด แบ่งได้เป็น : ปกติ {overviewHeader.ablv0}% : เล็กน้อย {overviewHeader.ablv1}% : ปานกลาง {overviewHeader.ablv2}% : รุนแรง {overviewHeader.ablv3}% </h2>
+      </div>
+          ))}
   </div>
 )}
 
 export default OverviewHeader
 
+/*
+<h1 className='tab1'>ประชากรแพะรวม : {total} ตัว (อาการผิดปกติในภาพรวม : {abnormaly})</h1>
+    <h2 className='tab1'>แพะที่มีความผิดปกติคิดเป็น {total_ab}% ของประชากรทั้งหมด แบ่งได้เป็น : ปกติ {ablv0}% : เล็กน้อย {ablv1}% : ปานกลาง {ablv2}% : รุนแรง {ablv3}% </h2>
+*/
 
 /*
 import { FC, ChangeEvent, MouseEvent, useState, Dispatch, SetStateAction } from 'react'
