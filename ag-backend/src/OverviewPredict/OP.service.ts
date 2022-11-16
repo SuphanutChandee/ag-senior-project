@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { OverviewPredict, OverviewPredictDocument } from '../OverviewPredict/OP.schema';
+import { OverviewPredict, OverviewPredictDocument } from './OP.schema';
 //import { CreateOverviewPredictDto } from './dto/create-OverviewPredict.dto';
 
 @Injectable()

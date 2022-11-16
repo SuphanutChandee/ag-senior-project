@@ -1,6 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { OverviewPredictsService } from './services/OverviewPredicts';
 
 let OverviewHeader = {
   "total": 6,
@@ -52,19 +51,6 @@ let unitdata = [
 
 let AllGoatsNum = [41119, 41120, 41121, 41122, 41123, 41124]
 
-let GoatsDetails = [
-  { "gnum" : "41119", "status" : "อุ้มท้อง", "unit" : 1, "gender" : "เมีย", "gene" : "-", "birthDate" : "3/5/2562", "bornWeight" : "50", "Fnum" : "-", "Fgene" : "-", "Mnum" : "-", "Mgene" : "-", "DD" : "-", "age" : 3, "behavior" : "ปกติ", "color": "เขียว"  },
-  { "gnum" : "41120", "status" : "อุ้มท้อง", "unit" : 1, "gender" : "เมีย", "gene" : "-", "birthDate" : "3/5/2562", "bornWeight" : "50", "Fnum" : "-", "Fgene" : "-", "Mnum" : "-", "Mgene" : "-", "DD" : "-", "age" : 3, "behavior" : "ปกติ", "color": "เขียว"  },
-  { "gnum" : "41121", "status" : "อุ้มท้อง", "unit" : 1, "gender" : "เมีย", "gene" : "-", "birthDate" : "3/5/2562", "bornWeight" : "50", "Fnum" : "-", "Fgene" : "-", "Mnum" : "-", "Mgene" : "-", "DD" : "-", "age" : 3, "behavior" : "ปกติ", "color": "เขียว"  },
-  { "gnum" : "41122", "status" : "อุ้มท้อง", "unit" : 2, "gender" : "เมีย", "gene" : "-", "birthDate" : "3/5/2562", "bornWeight" : "50", "Fnum" : "-", "Fgene" : "-", "Mnum" : "-", "Mgene" : "-", "DD" : "-", "age" : 3, "behavior" : "ปกติ", "color": "เขียว"  },
-  { "gnum" : "41123", "status" : "อุ้มท้อง", "unit" : 2, "gender" : "เมีย", "gene" : "-", "birthDate" : "3/5/2562", "bornWeight" : "50", "Fnum" : "-", "Fgene" : "-", "Mnum" : "-", "Mgene" : "-", "DD" : "-", "age" : 3, "behavior" : "ผิดปกติรุนแรง", "color": "แดง", "predicts" : [
-    { "date": "27/7/2565", "name": "ฉีดบาโคแล็ก", "type": "ฉีดวัคซีน-จ่ายยา", "details": "หมอสุชัย มาฉีดให้", "chance": "โอกาสสูง", "color": "แดง", },
-    { "date": "24/7/2565", "name": "พีแลค", "type": "เปลี่ยนอาหารข้น-หยาบ", "details": "นิวทริไลน์", "chance": "โอกาสปานกลาง", "color": "ฟ้า", },
-    { "date": "20/7/2565", "name": "ฉีดโบวิแบล็ค", "type": "ฉีดวัคซีน-จ่ายยา", "details": "หมอสุชัย มาฉีดให้", "chance": "โอกาสต่ำ", "color": "เหลือง", },
-  ]  },
-  { "gnum" : "41124", "status" : "อุ้มท้อง", "unit" : 2, "gender" : "เมีย", "gene" : "-", "birthDate" : "3/5/2562", "bornWeight" : "50", "Fnum" : "-", "Fgene" : "-", "Mnum" : "-", "Mgene" : "-", "DD" : "-", "age" : 3, "behavior" : "ปกติ", "color": "เขียว"  },
-]
-
 let EventList = [
   {
     "date": "27/7/2565",
@@ -88,7 +74,6 @@ let EventList = [
 
 @Controller()
 export class AppController {
-  constructor(private readonly overViewPredictService:OverviewPredictsService){}
 
   @Get()
   getHello(): any {
@@ -118,16 +103,6 @@ export class AppController {
   @Get('AllGoatsNum')
   AllGoats(): any {
     return AllGoatsNum;
-  }
-
-  @Get('GoatsDetails')
-  mergeAllGoatsDetailsPredicts(): any {
-    return GoatsDetails;
-  }
-
-  @Get('OverviewPredictList')
-  async OverviewPredictList(): Promise<any> {
-    return await this.overViewPredictService.findAll();
   }
   
 }
