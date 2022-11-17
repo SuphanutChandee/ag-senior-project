@@ -29,7 +29,7 @@ const OverviewHeader = () => {
     {overviewHeaderList.map((overviewHeader, idx) => (
       <div>
         <h1 className='tab1'>ประชากรแพะรวม : {overviewHeader.total} ตัว (อาการผิดปกติในภาพรวม : {overviewHeader.abnormaly})</h1>
-        <h2 className='tab1'>แพะที่มีความผิดปกติคิดเป็น {overviewHeader.total_ab}% ของประชากรทั้งหมด แบ่งได้เป็น : ปกติ {overviewHeader.ablv0}% : เล็กน้อย {overviewHeader.ablv1}% : ปานกลาง {overviewHeader.ablv2}% : รุนแรง {overviewHeader.ablv3}% </h2>
+        <h2 className='tab1'>แพะที่มีความผิดปกติคิดเป็น {overviewHeader.total_ab}% ของประชากรทั้งหมด แบ่งได้เป็น : ปกติ {overviewHeader.ablv0} ตัว : เล็กน้อย {overviewHeader.ablv1} ตัว : ปานกลาง {overviewHeader.ablv2} ตัว : รุนแรง {overviewHeader.ablv3} ตัว </h2>
       </div>
           ))}
   </div>

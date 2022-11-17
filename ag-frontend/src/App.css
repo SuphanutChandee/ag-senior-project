@@ -310,22 +310,7 @@ body {
   border-bottom: 1px solid #eee;
 }
 
-.color {
-  padding: 6px 30px;
-  margin: 10px;
-  background: orange;
-  display: inline-block;
-  border-radius: 100px;
-}
-
-.container {
-  box-sizing: border-box;
-  margin: 30px auto;
-  padding: 30px;
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #eee;
+.piechart {
+  max-width:500px;
+  max-height:500px;
 }

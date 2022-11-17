@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import MockedUPGraph from '../img/GroupMockup.png'
+import { Chart } from "react-google-charts";
 
 function GoatReportPage () {
 
@@ -25,8 +26,9 @@ function GoatReportPage () {
             type: "", 
             details: "", 
             chance: "", 
-            color: "", 
-            },] 
+            color: "" 
+            }],
+        Activity : [0] 
         }])
     const [gnum, setGnum] = useState("")
 
@@ -34,6 +36,7 @@ function GoatReportPage () {
         const fetchData = async () => {
           // get the data from the api
             const data = await fetch('http://localhost:3000/GoatsDetails');
+            //fetch('http://localhost:3000/GoatsDetails').then(data => console.log(data.json()));
           // convert the data to json
             const json = await data.json();
           // set state with the result 
@@ -50,6 +53,41 @@ function GoatReportPage () {
         }
         setGnum(res)
     },[]);
+
+/*
+    function ReportBar() {
+        let i=0;
+        let a=0, b=0, c=0, d=0, e=0, f=0, g=0;
+
+        const data = [
+            ["date", "Activity"],
+            ["11/11", a],
+            ["12/11", b],
+            ["13/11", c],
+            ["14/11", d],
+            ["15/11", e],
+            ["16/11", f],
+            ["17/11", g]
+        ];
+
+        const options = {
+            chart: {
+                title: "",
+                subtitle: "",
+            },
+        };
+
+        return (
+            <Chart
+                chartType="Bar"
+                width="100%"
+                height="400px"
+                data={data}
+                options={options}
+            />
+        );
+    }
+*/
 
     return (
         <div>
@@ -68,7 +106,26 @@ function GoatReportPage () {
                                     {allGoatsPredicts.gnum == gnum ? (
                                         <div>
                                             <div>
-                                                <img src={MockedUPGraph} className='MockedUPGraph'/>
+                                                <Chart
+                                                    chartType="Bar"
+                                                    width="100%"
+                                                    height="400px"
+                                                    data={[
+                                                        ["", "Activity"],
+                                                        ["ย้อนหลัง 7 วัน", allGoatsPredicts.Activity[0]],
+                                                        ["ย้อนหลัง 6 วัน", allGoatsPredicts.Activity[1]],
+                                                        ["ย้อนหลัง 5 วัน", allGoatsPredicts.Activity[2]],
+                                                        ["ย้อนหลัง 4 วัน", allGoatsPredicts.Activity[3]],
+                                                        ["ย้อนหลัง 3 วัน", allGoatsPredicts.Activity[4]],
+                                                        ["ย้อนหลัง 2 วัน", allGoatsPredicts.Activity[5]],
+                                                        ["ย้อนหลัง 1 วัน", allGoatsPredicts.Activity[6]]
+                                                    ]}
+                                                    options={{
+                                                        chart: {
+                                                            title: "Activity ของแพะใน 7 วันก่อรหน้า"
+                                                        },
+                                                    }}
+                                                />
                                             </div>
 
                                             {allGoatsPredicts.predicts.map((Predicts, idx3) => (
@@ -106,7 +163,21 @@ function GoatReportPage () {
 }
 export default GoatReportPage
 
-
+/*
+<img src={MockedUPGraph} className='MockedUPGraph'/>
+*/
+/*
+const data = [
+            ["date", "Activity"],
+            ["11/11", goatsDetails[i].Activity[0]],
+            ["12/11", goatsDetails[i].Activity[1]],
+            ["13/11", goatsDetails[i].Activity[2]],
+            ["14/11", goatsDetails[i].Activity[3]],
+            ["15/11", goatsDetails[i].Activity[4]],
+            ["16/11", goatsDetails[i].Activity[5]],
+            ["17/11", goatsDetails[i].Activity[6]]
+        ];
+*/
 /*
 return (
         <div>
