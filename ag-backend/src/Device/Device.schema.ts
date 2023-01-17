@@ -9,7 +9,13 @@ export class Device {
   device: string;
 
   @Prop()
-  activity: Number;
+  lastActivity: Number;
+
+  @Prop()
+  sumActivity: Number;
+
+  @Prop()
+  zeroActivity: Number;
 }
 
 export const DeviceSchema = SchemaFactory.createForClass(Device);

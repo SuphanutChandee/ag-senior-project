@@ -6,7 +6,7 @@ function PUTDATA(message) {
     let sumActivity = temp[2];
     let zeroActivity = temp[3]
 
-    let url = 'http://localhost:4000/update/'.concat("", device);
+    let url = 'http://localhost:3000/updateDeviceList?device='.concat("", device);
 
     var XMLHttpRequest = require('xhr2');
     let Http = new XMLHttpRequest();
@@ -21,6 +21,24 @@ function PUTDATA(message) {
     }
 
     return true;
+}
+
+async function PUTData(data) {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify(data);
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw
+    };
+    
+    return fetch("http://localhost:3000/updateEventList?eventNum="+eventNum, requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 }
 
 
@@ -55,9 +73,9 @@ wsServer.on('request', function(request) {
     console.log(request)
     if (!originIsAllowed(request.origin)) {
       // Make sure we only accept requests from an allowed origin
-      request.reject();
-      console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
-      return;
+        request.reject();
+        console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
+        return;
     }
     
     var connection = request.accept(null, request.origin)
