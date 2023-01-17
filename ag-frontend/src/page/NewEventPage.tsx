@@ -1,50 +1,103 @@
-import { Divider } from 'antd';
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+
+async function POSTData(data:any) {
+    return fetch('http://localhost:3000/newEventList', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+    })
+    .then(data => data.json())
+}
 
 function NewEventPage () {
-
-    // This holds the selected values
-    const [colors, setColors] = useState<String[]>();
     const [allGoatsNum, setAllGoatsNum] = useState([{
         _id: "",
         value: ""
     }])
 
-    // Handle the onChange event of the select
-    const onChangeHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const selectedOptions = event.currentTarget.selectedOptions;
-        const newColors = [];
-        for (let i = 0; i < selectedOptions.length; i++) {
-            newColors.push(selectedOptions[i].value);
-        }
-        setColors(newColors);
-    };
+    const [date, setDate] = useState("");
+    const [type, setType] = useState("");
+    const [details, setDetails] = useState("");
+    const [goats, setGoats] = useState([""]);
+    const [eventNum, setEventNum] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
           // get the data from the api
             const data = await fetch('http://localhost:3000/AllGoatsNum');
+            const data2 = await fetch('http://localhost:3000/EventList');
           // convert the data to json
             const json = await data.json();
+            const json2 = await data2.json();
           // set state with the result
             setAllGoatsNum(json);  
+            let maxNumber = 0;
+            for (let i = 0; i < json2.length; i++) {
+                if(json2[i].eventNum > maxNumber){
+                    maxNumber = json2[i].eventNum;
+                }
+            }
+            setEventNum(maxNumber+1);
         }
         fetchData();
+        setGoats([])
     },[]);
 
-    console.log(allGoatsNum)
+    const handlerSubmit1 = async (e:any) => {
+        e.preventDefault();
+        
+        const response = await POSTData({
+            date,
+            type,
+            details,
+            goats,
+            eventNum
+        });
+        console.log(response);
+        //console.log(date, type, description, gns);
+        window.location.href="/Event"
+    }
+
+    const handlerSubmit2 = async (e:any) => {
+        e.preventDefault();
+        
+        const response = await POSTData({
+            date,
+            type,
+            details,
+            goats,
+            eventNum
+        });
+        console.log(response);
+        //console.log(date, type, description, gns);
+        window.location.href="/"
+    }
+
+    const handleChange = async (x:any) =>{
+        if( x.target.checked == true)
+        {
+            //console.log('Checked', x.target.id);
+            setGoats([...goats, x.target.id])
+        }
+        else {
+            //console.log('unChecked', x.target.id);
+            setGoats(goats.filter(a => a !== x.target.id))
+        }
+      }
 
     return (
         <div>
             <div className="section">
                 <h2>วันที่</h2>
                 <h2>:</h2>
-                <input className="inputText" type="text" id="date" name="date" placeholder="กรุณากรอกในรูปแบบ วัน/เดือน/ปี, หากไม่ทราบหรือไม่ต้องการกรอก ให้ใส่ -"></input>
+                <input className="inputText" type="text" id="date" name="date" onChange={e => setDate(e.target.value)} placeholder="กรุณากรอกในรูปแบบ วัน/เดือน/ปี, หากไม่ทราบหรือไม่ต้องการกรอก ให้ใส่ -"></input>
             </div>
             <div className="section">
                 <h2>ประเภท</h2>
                 <h2>:</h2>
-                <select className="inputText" name="type" id="type">
+                <select className="inputText" name="type" id="type" onChange={e => setType(e.target.value)}>
                     <option value="" disabled selected hidden>กรุณาเลือกประเภทของกิจกรรม</option>
                     <option value="ขายแพะออก">ขายแพะออก</option>
                     <option value="นำแพะนอกเข้าฝูง">นำแพะนอกเข้าฝูง</option>
@@ -60,7 +113,7 @@ function NewEventPage () {
             <div className="section">
                 <h2>คำอธิบาย</h2>
                 <h2>:</h2>
-                <input className="inputText" type="text" id="description" name="description" placeholder="หากไม่ทราบหรือไม่ต้องการกรอก ให้ใส่ -"></input>
+                <input className="inputText" type="text" id="details" name="details" onChange={e => setDetails(e.target.value)} placeholder="หากไม่ทราบหรือไม่ต้องการกรอก ให้ใส่ -"></input>
             </div>
             
             <div className="section">
@@ -69,7 +122,7 @@ function NewEventPage () {
                 <div className="MultiSelecTextBackground">
                     {allGoatsNum.map((allGoatsNum, idx) => (
                         <div>
-                            <input key={idx} id={allGoatsNum.value} name={allGoatsNum.value} type="checkbox"/>
+                            <input key={idx} id={allGoatsNum.value} name={allGoatsNum.value} type="checkbox" onChange={handleChange}/>
                             <label className="inputText" htmlFor={allGoatsNum.value}>{allGoatsNum.value}</label>
                         </div>
                     ))}
@@ -78,12 +131,8 @@ function NewEventPage () {
             </div>
 
             <div className='gridSubThree'>
-            <form action="newevent">
-                <button className="ยืนยันแล้วเพิ่ม">ยืนยันแล้วเพิ่มกิจกรรม</button>
-            </form>
-            <form action="/">
-                <button className="ยืนยันแล้วกลับหน้าหลัก">ยืนยันแล้วกลับหน้าหลัก</button>
-            </form>
+            <button className="ยืนยันแล้วเพิ่ม" onClick={handlerSubmit1}>ยืนยันแล้วลับหน้ากิจกรรม</button>
+            <button className="ยืนยันแล้วกลับหน้าหลัก" onClick={handlerSubmit2}>ยืนยันแล้วกลับหน้าหลัก</button>
             <form action="/">
                 <button className="ยกเลิกแล้วกลับหน้าหลัก">ยกเลิกแล้วกลับหน้าหลัก</button>
             </form>
@@ -94,6 +143,8 @@ function NewEventPage () {
     )
 }
 export default NewEventPage
+
+//
 
 /*
 

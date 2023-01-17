@@ -1,16 +1,34 @@
 import React, { useState, useEffect } from 'react'
-import AddUnit from "../img/AddUnit.png"
-
 const Event = ({}) => {
   const [dropDown, setDropDown] = useState([false])
   const [goatsArray, setGoatsArray] = useState([""])
-  const [ActivityList, setActivityList] = useState([{
+  const [eventList, setEventList] = useState([{
+    eventNum: 0,
     date: "",
     name: "",
     type: "",
     details: "",
     goats: [""]
   }]);
+
+  async function DELETEData(evNum:Number) {
+    var requestOptions = {
+      method: 'DELETE'
+    };
+    
+    return fetch("http://localhost:3000/deleteEventList?eventNum="+evNum, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+}
+
+const handlerDelete = async (e:Number) => {
+  console.log(e);
+  const response = await DELETEData(e);
+  console.log(response);
+  //console.log(date, type, description, gns);
+  window.location.href="/Event"
+}
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,11 +37,11 @@ const Event = ({}) => {
       // convert the data to json
       const json = await data.json();
       // set state with the result
-      setActivityList(json);
+      setEventList(json);
     }
     fetchData(); 
 
-    for (let i=0; i<ActivityList.length; i++) {
+    for (let i=0; i<eventList.length; i++) {
       setDropDown((dropDown) => [...dropDown, false])
       setGoatsArray((goatsArray) => [...goatsArray, ""])
     }
@@ -35,9 +53,9 @@ const Event = ({}) => {
       newVal[value] = !newVal[value]
 
       let temp = ""
-      for (let i=0; i<ActivityList[value].goats.length; i++){
-        temp = temp + ActivityList[value].goats[i]
-        if(i < ActivityList[value].goats.length-1){
+      for (let i=0; i<eventList[value].goats.length; i++){
+        temp = temp + eventList[value].goats[i]
+        if(i < eventList[value].goats.length-1){
           temp = temp + ", "
         }
       }
@@ -50,15 +68,27 @@ const Event = ({}) => {
   return (
   <div>
     <div>
-    {ActivityList.map((ActivityList, idx) => (
+    {eventList.map((eventList, idx) => (
         <div key={idx} className="centerDivMorePadding">
-            <button onClick={(e) => buttonDropdownHandler(e, idx)} className='ActivityBar'><h2 className='tab4'>{ActivityList.date} : {ActivityList.name} : "{ActivityList.type}" : {ActivityList.details}</h2></button>
+            <button onClick={(e) => buttonDropdownHandler(e, idx)} className='ActivityBar'><h2 className='tab4'>({eventList.eventNum}) : {eventList.date} : "{eventList.type}" : {eventList.details}</h2></button>
             { dropDown[idx] ? (
 
-                <button onClick={(e) => buttonDropdownHandler(e, idx)} className='ActivityBar'><h2 className='tab4'>แพะที่เกี่ยวข้อง {goatsArray[idx]}</h2></button>
+                <button onClick={(e) => buttonDropdownHandler(e, idx)} className='SubActivityBar'><h2 className='tab4'>แพะที่เกี่ยวข้อง {goatsArray[idx]}</h2></button>
 
             ) : null
             }
+
+            <div className='gridSubTwo'>
+              <form action={"/editEvent/"+eventList.eventNum}>
+                <button className='editNdeleteEventButton'>แก้ไข</button>
+              </form>
+              <form action="/Event">
+                <button className='editNdeleteEventButton' onClick={e => handlerDelete(eventList.eventNum)}>ลบ</button>
+              </form>
+            </div>
+
+              
+              
         </div>
     ))}
     </div>

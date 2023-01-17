@@ -314,3 +314,31 @@ body {
   max-width:500px;
   max-height:500px;
 }
+
+.editNdeleteEventButton {
+  background-color: #aefaffc0;
+  width: 90%;
+  border: none;
+  color: black;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 2.5%;
+}
+
+.gridSubTwo {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.SubActivityBar {
+  background-color: #00e0d1;
+  width: 98%;
+  border: none;
+  color: black;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  cursor: pointer;
+}

@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "start:server": "node src/server.js",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -25,11 +26,17 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/mongoose": "^9.2.1",
     "@nestjs/platform-express": "^9.0.0",
+    "class-validator": "^0.14.0",
+    "express-ws": "^5.0.2",
     "mongoose": "^6.7.2",
+    "node-fetch": "^3.3.0",
     "react": "^18.2.0",
     "reflect-metadata": "^0.1.13",
+    "request": "^2.88.2",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "websocket": "^1.0.34",
+    "xhr2": "^0.2.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

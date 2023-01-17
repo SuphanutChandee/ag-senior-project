@@ -11,6 +11,7 @@ import NewGoatPage from './page/NewGoatPage'
 import NewEventPage from './page/NewEventPage';
 import GoatReportPage from './page/GoatReportPage';
 import EditGoatPage from './page/EditGoatPage';
+import EditEventPage from './page/EditEventPage';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="newevent" element={<NewEventPage />}/>
         <Route path="goat/*" element={<GoatReportPage />}/>
         <Route path="editgoat/*" element={<EditGoatPage />}/>
+        <Route path="editEvent/*" element={<EditEventPage />}/>
         
         <Route path="*" element={<NoPage />} />
       </Routes>

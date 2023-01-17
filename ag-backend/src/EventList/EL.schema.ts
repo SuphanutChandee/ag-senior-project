@@ -6,6 +6,9 @@ export type EventListDocument = HydratedDocument<EventList>;
 @Schema()
 export class EventList {
   @Prop()
+  eventNum: number;
+  
+  @Prop()
   date: string;
 
   @Prop()
@@ -15,7 +18,7 @@ export class EventList {
   details: string;
 
   @Prop()
-  goat : {
+  goats : {
     value: string;
   }[]
 }

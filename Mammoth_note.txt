@@ -11,3 +11,7 @@ npm run start:dev
 #run backend http://localhost:3000/
 npm start 
 #run frontend http://localhost:2000/
+
+npm run start:server
+
+node ./src/PostNPut.js

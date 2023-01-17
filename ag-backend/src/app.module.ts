@@ -10,9 +10,10 @@ import { AllGoatsNumModule } from './AllGoatsNum/AGN.module'
 import { OverviewHousesModule } from './OverviewHouses/OH.module'
 import { GoatInHousesListModule } from './GoatInHousesList/GIHL.module'
 import { EventListModule } from './EventList/EL.module'
+import { DevicesModule } from './Device/Device.module'
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb+srv://mothmam:1q2w3e4r@cluster0.xrlafdg.mongodb.net/AG'), OverviewPredictsModule, GoatsDetailsModule, OverviewHeaderModule, AllGoatsNumModule, OverviewHousesModule, GoatInHousesListModule, EventListModule],
+  imports: [MongooseModule.forRoot('mongodb+srv://mothmam:1q2w3e4r@cluster0.xrlafdg.mongodb.net/AG'), OverviewPredictsModule, GoatsDetailsModule, OverviewHeaderModule, AllGoatsNumModule, OverviewHousesModule, GoatInHousesListModule, EventListModule, DevicesModule],
   controllers: [AppController],
   providers: [AppService],
 })
