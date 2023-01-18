@@ -2,7 +2,8 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { AllGoatsNum, AllGoatsNumDocument } from './AGN.schema';
-//import { CreateAllGoatsNumDto } from './dto/create-AllGoatsNum.dto';
+import { UpdateAllGoatsNumDto } from './update-AGN.dto';
+import { CreateAllGoatsNumDto } from './create-AGN.dto';
 
 @Injectable()
 export class AllGoatsNumService {
@@ -15,5 +16,10 @@ export class AllGoatsNumService {
 
   async findAll(): Promise<AllGoatsNum[]> {
     return this.AllGoatsNumModel.find().exec();
+  }
+
+  async add(createAllGoatsNumDto: CreateAllGoatsNumDto) {
+    const creatrGoatNum = new this.AllGoatsNumModel(createAllGoatsNumDto);
+    return creatrGoatNum.save();
   }
 }

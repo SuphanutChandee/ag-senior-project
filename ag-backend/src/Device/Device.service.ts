@@ -18,10 +18,11 @@ export class DevicesService {
   async update(device: string, updateDeviceListDto: UpdateDeviceListDto) {
     const put = await this.DeviceModel
       .findOneAndReplace({ device: device}, updateDeviceListDto, { new: true })
+      /*
       .populate('device')
       .populate('lastActivity')
       .populate('sumActivity')
-      .populate('zeroActivity');
+      .populate('zeroActivity')*/;
     if (!put) {
       throw new NotFoundException();
     }

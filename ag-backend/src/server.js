@@ -1,3 +1,4 @@
+
 function PUTDATA(message) {
     let temp = message.utf8Data.replace(/{/g, "").replace(/}/g, "").replace(/:/g, "").replace('device', "").replace('lastActivity', "").replace('sumActivity', "").replace('zeroActivity', "").replace(/"/g, "");
     temp = temp.split(',');
@@ -22,25 +23,6 @@ function PUTDATA(message) {
 
     return true;
 }
-
-async function PUTData(data) {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify(data);
-
-    var requestOptions = {
-        method: 'PUT',
-        headers: myHeaders,
-        body: raw
-    };
-    
-    return fetch("http://localhost:3000/updateEventList?eventNum="+eventNum, requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-}
-
 
 var WebSocketServer = require('websocket').server;
 var http = require('http');

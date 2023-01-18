@@ -1,6 +1,7 @@
 import { SetStateAction, useEffect, useState } from 'react'
 
 const OverviewPredict = () => {
+  
   const [overviewPredictList, setOverviewPredictList] = useState([{
     date: "",
     name: "",
@@ -26,7 +27,7 @@ const OverviewPredict = () => {
   },[]);
 
   //console.log(overviewPredictList)
-
+/*
   return (
   <div className='predict'>
     <h2 className='tab2'>สาเหตุที่คาดการ</h2>
@@ -40,7 +41,14 @@ const OverviewPredict = () => {
     ))}
     </div>
   </div>
-)}
+    )
+*/
+    return (
+      <div>
+
+      </div>
+    )
+  }
 
 export default OverviewPredict
 

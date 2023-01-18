@@ -18,11 +18,11 @@ export class EventListService {
   async update(eventNum: number, updateEventListDto: UpdateEventListDto) {
     const put = await this.EventListModel
       .findOneAndReplace({ eventNum: eventNum}, updateEventListDto, { new: true })
-      .populate('eventNum')
+      /*.populate('eventNum')
       .populate('date')
       .populate('type')
       .populate('details')
-      .populate('goats');
+      .populate('goats')*/;
     if (!put) {
       throw new NotFoundException();
     }

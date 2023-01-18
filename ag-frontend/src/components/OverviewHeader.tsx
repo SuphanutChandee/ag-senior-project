@@ -15,7 +15,7 @@ const OverviewHeader = () => {
   useEffect(() => {
     const fetchData = async () => {
       // get the data from the api
-      const data = await fetch('http://localhost:3000/OverviewHeaderList');
+      const data = await fetch('http://localhost:3000/OverviewHeader');
       // convert the data to json
       const json = await data.json();
       // set state with the result

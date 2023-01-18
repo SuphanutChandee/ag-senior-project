@@ -59,6 +59,9 @@ export class GoatsDetails {
     chance: string;
     color: string;
   }[];
+
+  @Prop()
+  Activity: [];
 }
 
 export const GoatsDetailsSchema = SchemaFactory.createForClass(GoatsDetails);

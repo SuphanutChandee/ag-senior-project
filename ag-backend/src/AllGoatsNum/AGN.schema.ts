@@ -6,7 +6,7 @@ export type AllGoatsNumDocument = HydratedDocument<AllGoatsNum>;
 @Schema()
 export class AllGoatsNum {
   @Prop()
-  value: number;
+  value: String;
 }
 
 export const AllGoatsNumSchema = SchemaFactory.createForClass(AllGoatsNum);

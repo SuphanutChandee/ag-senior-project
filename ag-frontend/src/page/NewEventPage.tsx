@@ -92,7 +92,7 @@ function NewEventPage () {
             <div className="section">
                 <h2>วันที่</h2>
                 <h2>:</h2>
-                <input className="inputText" type="text" id="date" name="date" onChange={e => setDate(e.target.value)} placeholder="กรุณากรอกในรูปแบบ วัน/เดือน/ปี, หากไม่ทราบหรือไม่ต้องการกรอก ให้ใส่ -"></input>
+                <input className="inputText" type="text" onFocus={e => {e.currentTarget.type = "date"; e.currentTarget.focus();}} onBlur={e => {e.currentTarget.type = "text"; e.currentTarget.placeholder = "กรุณากรอกวันที่";}} id="date" name="date" onChange={e => setDate(e.target.value)} placeholder="กรุณากรอกวันที่"></input>
             </div>
             <div className="section">
                 <h2>ประเภท</h2>

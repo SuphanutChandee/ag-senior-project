@@ -121,6 +121,7 @@ function EditEventPage () {
             setGoats(goats.filter(a => a !== x.target.id))
         }
     }
+
 /*
     console.log(eventNum)
     console.log(date);
@@ -137,7 +138,7 @@ function EditEventPage () {
                             <div className="section" >
                                 <h2>วันที่</h2>
                                 <h2>:</h2>
-                                <input className="inputText" type="text" id="date" name="date" onChange={e => setDate(e.target.value)} placeholder={eventList.date}></input>
+                                <input className="inputText" type="text" onFocus={e => {e.currentTarget.type = "date"; e.currentTarget.focus();}} onBlur={e => {e.currentTarget.type = "text"; e.currentTarget.placeholder = eventList.date;}} id="date" name="date" onChange={e => setDate(e.target.value)} placeholder={eventList.date}></input>
                             </div>
                             <div className="section">
                                 <h2>ประเภท</h2>
