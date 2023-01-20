@@ -11,6 +11,11 @@ export class GoatsDetailsController {
     return await this.goatsDetailsService.findAll();
   }
 
+  @Get('FindOneGoatDetails')
+  async FindOneGoatDetails(@Query("gnum") gnum) {
+    return await this.goatsDetailsService.findOne(gnum);
+  }
+
   @Put('updateGoatsDetails')
   async updateEventList(@Query("gnum") gnum, @Body() put: UpdateGoatsDetailstDto ) {
     //console.log(put)

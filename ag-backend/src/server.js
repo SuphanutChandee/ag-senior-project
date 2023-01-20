@@ -1,12 +1,5 @@
 
-function PUTDATA(message) {
-    let temp = message.utf8Data.replace(/{/g, "").replace(/}/g, "").replace(/:/g, "").replace('device', "").replace('lastActivity', "").replace('sumActivity', "").replace('zeroActivity', "").replace(/"/g, "");
-    temp = temp.split(',');
-    let device = temp[0];
-    let lastActivity = temp[1];
-    let sumActivity = temp[2];
-    let zeroActivity = temp[3]
-
+function DeviceUpdate(device, lastActivity, sumActivity, zeroActivity) {
     let url = 'http://localhost:3000/updateDeviceList?device='.concat("", device);
 
     var XMLHttpRequest = require('xhr2');
@@ -15,14 +8,59 @@ function PUTDATA(message) {
     Http.open("PUT", url);
 
     Http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    Http.send(JSON.stringify({ "lastActivity": lastActivity, "sumActivity": sumActivity, "zeroActivity": zeroActivity }));
+    Http.send(JSON.stringify({ "device": device, "lastActivity": lastActivity, "sumActivity": sumActivity, "zeroActivity": zeroActivity }));
 
     Http.onreadystatechange = (e) => {
         console.log(Http.responseText)
     }
-
-    return true;
 }
+
+const behaviorLV = {0: "ปกติ", 1: "ผิดปกติเล็กน้อย", 2: "ผิดปกติปานกลาง", 3: "ผิดปกติรุนแรง"};
+const chanceLV = {0: "โอกาสต่ำ", 1: "โอกาสปานกลาง", 2: "โอกาสสูง"};
+const colorDic = {"ปกติ": "เขียว", "ผิดปกติเล็กน้อย": "เหลือง", "ผิดปกติปานกลาง": "ฟ้า", "ผิดปกติรุนแรง": "เขียว"
+                , "โอกาสต่ำ": "เหลือง", "โอกาสปานกลาง": "ฟ้า", "โอกาสสูง": "แดง"};
+//console.log(colorDic["ปกติ"]);
+//console.log(colorDic.ปกติ);
+const eventType = ["ขายแพะออก", "นำแพะนอกเข้าฝูง", "เปลี่ยนอาหารข้น-หยาบ", "ย้ายคอก-โรงเรือน", "ผสม", "หย่านม", "ฉีดวัคซีน", "คลอด", "ผ่าตัด"];
+const avgActivity = 35; //Action ที่ควรจะเป็นใน 10 นาที
+
+Date.prototype.timeNow = function () { return ((this.getHours() < 10)?"0":"") + this.getHours();}
+const wakeup = 5; //ตื่นตอน ตี5
+const sleep = 20; //นอนหลับตอน 2 ทุ่ม
+
+
+function analyze(device, lastActivity, sumActivity, zeroActivity) {
+    device = parseInt(device);
+    lastActivity = parseInt(lastActivity);
+    sumActivity = parseInt(sumActivity);
+    zeroActivity = parseInt(zeroActivity);
+
+    let activityDiff = Math.abs(((lastActivity - avgActivity)/avgActivity)*100); //ผลต่างของ avgActivity กับ lastActivity เป็น %
+
+    var HoursNow = parseInt(new Date().timeNow()); //เวลา ปจบ. เป็น ชม.
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var WebSocketServer = require('websocket').server;
 var http = require('http');
@@ -65,10 +103,18 @@ wsServer.on('request', function(request) {
 
     connection.on('message', function(message) {
         if (message.type === 'utf8') {
-            PUTDATA(message);
+            let temp = message.utf8Data.replace(/{/g, "").replace(/}/g, "").replace(/:/g, "").replace('device', "").replace('lastActivity', "").replace('sumActivity', "").replace('zeroActivity', "").replace(/"/g, "");
+            temp = temp.split(',');
+            let device = temp[0];
+            let lastActivity = temp[1];
+            let sumActivity = temp[2];
+            let zeroActivity = temp[3]
+            DeviceUpdate(device, lastActivity, sumActivity, zeroActivity)
             console.log('Received Message: ' + message.utf8Data);
-            //connection.sendUTF(message.utf8Data); this resend the reseived message, instead of it i will send a custom message. hello from nodejs
-            //connection.sendUTF("node.js have Received Message from You(ESP32).");
+            //////////////////
+            analyze(device, lastActivity, sumActivity, zeroActivity);
+            //////////////////
+
         }
         else if (message.type === 'binary') {
             console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');

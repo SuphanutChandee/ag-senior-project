@@ -33,4 +33,9 @@ export class EventListController {
   async EventList(): Promise<any> {
     return await this.eventListService.findAll();
   }
+
+  @Get('FindOneEventList')
+  async FindOneEventList(@Query("eventNum") eventNum) {
+    return await this.eventListService.findOne(eventNum);
+  }
 }

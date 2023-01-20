@@ -13,6 +13,14 @@ export class GoatsDetailsService {
     return this.GoatsDetailsModel.find().exec();
   }
 
+  async findOne(gnum: string) {
+    const fOne = await this.GoatsDetailsModel.findOne({gnum: gnum});
+    if (!fOne) {
+      throw new NotFoundException();
+    }
+    return fOne;
+  }
+
   async update(gnum: string, updateGoatsDetailstDto: UpdateGoatsDetailstDto) {
     const put = await this.GoatsDetailsModel
       .findOneAndReplace({ gnum: gnum}, updateGoatsDetailstDto, { new: true })

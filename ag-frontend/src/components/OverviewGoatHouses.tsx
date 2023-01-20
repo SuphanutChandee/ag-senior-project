@@ -64,9 +64,6 @@ const OverviewGoatHouses = ({}) => {
                   </form>    
                 </div>
                 ))}
-                <form action="/newgoat">
-                  <input type="image" src={AddUnit} className="Addunit"/>
-                </form>
               </div>
             ) : null
             }

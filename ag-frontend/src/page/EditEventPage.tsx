@@ -8,14 +8,14 @@ function EditEventPage () {
         _id: "",
         value: ""
     }])
-    const [eventList, setEventList] = useState([{
+    const [eventList, setEventList] = useState({
         eventNum: 0,
         date: "",
         name: "",
         type: "",
         details: "",
         goats: [""]
-    }]);
+    });
 
     const [date, setDate] = useState("");
     const [type, setType] = useState("");
@@ -57,22 +57,17 @@ function EditEventPage () {
             
           // get the data from the api
             const data = await fetch('http://localhost:3000/AllGoatsNum');
-            const data2 = await fetch('http://localhost:3000/EventList');
+            const data2 = await fetch('http://localhost:3000/FindOneEventList?eventNum='+res);
           // convert the data to json
             const json = await data.json();
             const json2 = await data2.json();
           // set state with the result
             setAllGoatsNum(json);  
             setEventList(json2);
-            
-            for (let i=0; i<json2.length; i++){
-                if(json2[i].eventNum == parseInt(res)){
-                    if (date == "") setDate(json2[i].date);
-                    setType(json2[i].type);
-                    setDetails(json2[i].details);
-                    setGoats(json2[i].goats);
-                }
-            }
+            setDate(json2.date);
+            setType(json2.type);
+            setDetails(json2.details);
+            setGoats(json2.goats);
         }
         
         fetchData();
@@ -131,68 +126,58 @@ function EditEventPage () {
 
     return (
         <div>
-            {eventList.map((eventList, idx) => (
-                <div key={idx}>
-                    {eventList.eventNum === eventNum ? (
-                        <div>
-                            <div className="section" >
-                                <h2>วันที่</h2>
-                                <h2>:</h2>
-                                <input className="inputText" type="text" onFocus={e => {e.currentTarget.type = "date"; e.currentTarget.focus();}} onBlur={e => {e.currentTarget.type = "text"; e.currentTarget.placeholder = eventList.date;}} id="date" name="date" onChange={e => setDate(e.target.value)} placeholder={eventList.date}></input>
-                            </div>
-                            <div className="section">
-                                <h2>ประเภท</h2>
-                                <h2>:</h2>
-                                <select className="inputText" name="type" id="type" onChange={e => setType(e.target.value)}>
-                                    <option value="" disabled selected hidden>{eventList.type}</option>
-                                    <option value="ขายแพะออก">ขายแพะออก</option>
-                                    <option value="นำแพะนอกเข้าฝูง">นำแพะนอกเข้าฝูง</option>
-                                    <option value="เปลี่ยนอาหารข้น-หยาบ">เปลี่ยนอาหารข้น-หยาบ</option>
-                                    <option value="ย้ายคอก-โรงเรือน">ย้ายคอก-โรงเรือน</option>
-                                    <option value="ผสม">ผสม</option>
-                                    <option value="หย่านม">หย่านม</option>
-                                    <option value="ฉีดวัคซีน">ฉีดวัคซีน</option>
-                                    <option value="คลอด">คลอด</option>
-                                    <option value="ผ่าตัด">ผ่าตัด</option>
-                                </select>          
-                            </div>
-                            <div className="section">
-                                <h2>คำอธิบาย</h2>
-                                <h2>:</h2>
-                                <input className="inputText" type="text" id="details" name="details" onChange={e => setDetails(e.target.value)} placeholder={eventList.details}></input>
-                            </div>
-            
-                            <div className="section">
-                                <h2>แพะที่เกี่ยวข้อง</h2>
-                                <h2>:</h2>
-                                <div className="MultiSelecTextBackground">
-                                    {allGoatsNum.map((allGoatsNum, idx2) => (
-                                    <div key={idx2}>
-                                        <input id={allGoatsNum.value} name={allGoatsNum.value} type="checkbox" onChange={handleChange}/>
-                                        <label className="inputText" htmlFor={allGoatsNum.value}>{allGoatsNum.value}</label>
-                                    </div>
-                                    ))}
-                            </div>
-                                        
-                        </div>
-                            
-                    </div>
-                    ) : null
-                    }
+            <div>
+                <div className="section" >
+                    <h2>วันที่</h2>
+                    <h2>:</h2>
+                    <input className="inputText" type="text" onFocus={e => {e.currentTarget.type = "date"; e.currentTarget.focus();}} onBlur={e => {e.currentTarget.type = "text"; e.currentTarget.placeholder = eventList.date;}} id="date" name="date" onChange={e => setDate(e.target.value)} placeholder={eventList.date}></input>
                 </div>
-            ))}
+                    <div className="section">
+                    <h2>ประเภท</h2>
+                    <h2>:</h2>
+                    <select className="inputText" name="type" id="type" onChange={e => setType(e.target.value)}>
+                        <option value="" disabled selected hidden>{eventList.type}</option>
+                        <option value="ขายแพะออก">ขายแพะออก</option>
+                        <option value="นำแพะนอกเข้าฝูง">นำแพะนอกเข้าฝูง</option>
+                        <option value="เปลี่ยนอาหารข้น-หยาบ">เปลี่ยนอาหารข้น-หยาบ</option>
+                        <option value="ย้ายคอก-โรงเรือน">ย้ายคอก-โรงเรือน</option>
+                        <option value="ผสม">ผสม</option>
+                        <option value="หย่านม">หย่านม</option>
+                        <option value="ฉีดวัคซีน">ฉีดวัคซีน</option>
+                        <option value="คลอด">คลอด</option>
+                        <option value="ผ่าตัด">ผ่าตัด</option>
+                    </select>          
+                </div>
+                <div className="section">
+                    <h2>คำอธิบาย</h2>
+                    <h2>:</h2>
+                    <input className="inputText" type="text" id="details" name="details" onChange={e => setDetails(e.target.value)} placeholder={eventList.details}></input>
+                </div>
+            
+                <div className="section">
+                    <h2>แพะที่เกี่ยวข้อง</h2>
+                    <h2>:</h2>
+                    <div className="MultiSelecTextBackground">
+                        {allGoatsNum.map((allGoatsNum, idx2) => (
+                        <div key={idx2}>
+                            <input id={allGoatsNum.value} name={allGoatsNum.value} type="checkbox" onChange={handleChange}/>
+                            <label className="inputText" htmlFor={allGoatsNum.value}>{allGoatsNum.value}</label>
+                        </div>
+                        ))}
+                </div>                 
+            </div>       
+        </div>
 
             
 
             <div className='gridSubThree'>
-            <button className="ยืนยันแล้วเพิ่ม" onClick={handlerSubmit1}>ยืนยันแล้วกลับหน้ากิจกรรม</button>
-            <button className="ยืนยันแล้วกลับหน้าหลัก" onClick={handlerSubmit2}>ยืนยันแล้วกลับหน้าหลัก</button>
-            <form action="/">
-                <button className="ยกเลิกแล้วกลับหน้าหลัก">ยกเลิกแล้วกลับหน้าหลัก</button>
-            </form>
+                <button className="ยืนยันแล้วเพิ่ม" onClick={handlerSubmit1}>ยืนยันแล้วกลับหน้ากิจกรรม</button>
+                <button className="ยืนยันแล้วกลับหน้าหลัก" onClick={handlerSubmit2}>ยืนยันแล้วกลับหน้าหลัก</button>
+                <form action="/">
+                    <button className="ยกเลิกแล้วกลับหน้าหลัก">ยกเลิกแล้วกลับหน้าหลัก</button>
+                </form>
             </div>
-            
-            
+
         </div> 
     )
 }

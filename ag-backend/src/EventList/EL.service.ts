@@ -41,4 +41,12 @@ export class EventListService {
   async findAll(): Promise<EventList[]> {
     return this.EventListModel.find().exec();
   }
+
+  async findOne(eventNum: number) {
+    const fOne = await this.EventListModel.findOne({eventNum: eventNum});
+    if (!fOne) {
+      throw new NotFoundException();
+    }
+    return fOne;
+  }
 }
