@@ -11,6 +11,11 @@ export class OverviewHousesController {
     return await this.overviewHousesService.findAll();
   }
 
+  @Get('FindOneOverviewHouses')
+  async FindOneGoatDetails(@Query("unit") unit) {
+    return await this.overviewHousesService.findOne(unit);
+  }
+
   @Put('updateOverviewHouses')
   async updateOverviewHouses(@Query("unit") unit, @Body() put: UpdateOverviewHousesDto ) {
     //console.log(put)

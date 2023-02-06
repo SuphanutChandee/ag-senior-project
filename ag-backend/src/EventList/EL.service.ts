@@ -17,7 +17,7 @@ export class EventListService {
 
   async update(eventNum: number, updateEventListDto: UpdateEventListDto) {
     const put = await this.EventListModel
-      .findOneAndReplace({ eventNum: eventNum}, updateEventListDto, { new: true })
+      .findOneAndUpdate({ eventNum: eventNum}, updateEventListDto, { new: true })
       /*.populate('eventNum')
       .populate('date')
       .populate('type')

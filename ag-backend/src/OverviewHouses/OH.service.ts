@@ -14,9 +14,17 @@ export class OverviewHousesService {
     return this.OverviewHousesModel.find().exec();
   }
 
+  async findOne(unit: number) {
+    const fOne = await this.OverviewHousesModel.findOne({unit: unit});
+    if (!fOne) {
+      throw new NotFoundException();
+    }
+    return fOne;
+  }
+
   async update(unit: number, updateOverviewHousesDto: UpdateOverviewHousesDto) {
     const put = await this.OverviewHousesModel
-      .findOneAndReplace({ unit: unit}, updateOverviewHousesDto, { new: true });
+      .findOneAndUpdate({ unit: unit}, updateOverviewHousesDto, { new: true });
     if (!put) {
       throw new NotFoundException();
     }

@@ -17,7 +17,7 @@ export class DevicesService {
 
   async update(device: string, updateDeviceListDto: UpdateDeviceListDto) {
     const put = await this.DeviceModel
-      .findOneAndReplace({ device: device}, updateDeviceListDto, { new: true })
+      .findOneAndUpdate({ device: device}, updateDeviceListDto, { new: true })
       /*
       .populate('device')
       .populate('lastActivity')

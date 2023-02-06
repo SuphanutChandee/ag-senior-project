@@ -23,7 +23,7 @@ export class GoatsDetailsService {
 
   async update(gnum: string, updateGoatsDetailstDto: UpdateGoatsDetailstDto) {
     const put = await this.GoatsDetailsModel
-      .findOneAndReplace({ gnum: gnum}, updateGoatsDetailstDto, { new: true })
+      .findOneAndUpdate({ gnum: gnum}, updateGoatsDetailstDto, { new: true })
       /*.populate('gnum')
       .populate('status')
       .populate('unit')
