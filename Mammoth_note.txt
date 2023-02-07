@@ -15,6 +15,11 @@ npm start
 
 npm run start:server
 
+node ./src/dataCollectSever.js
+
+
+
+
 node ./src/PostNPut.js
 
 node ./src/temp.js

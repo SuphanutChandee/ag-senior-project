@@ -12,9 +12,10 @@ import { GoatInHousesListModule } from './GoatInHousesList/GIHL.module'
 import { EventListModule } from './EventList/EL.module'
 import { DevicesModule } from './Device/Device.module'
 import { LineAleartsModule } from './LineAleart/LineAleart.module';
+import { CollectDatasModule } from './CollectData/CollectData.module'; 
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb+srv://mothmam:1q2w3e4r@cluster0.xrlafdg.mongodb.net/AG'), OverviewPredictsModule, GoatsDetailsModule, OverviewHeaderModule, AllGoatsNumModule, OverviewHousesModule, GoatInHousesListModule, EventListModule, DevicesModule, LineAleartsModule],
+  imports: [MongooseModule.forRoot('mongodb+srv://mothmam:1q2w3e4r@cluster0.xrlafdg.mongodb.net/AG'), OverviewPredictsModule, GoatsDetailsModule, OverviewHeaderModule, AllGoatsNumModule, OverviewHousesModule, GoatInHousesListModule, EventListModule, DevicesModule, LineAleartsModule, CollectDatasModule],
   controllers: [AppController],
   providers: [AppService],
 })
