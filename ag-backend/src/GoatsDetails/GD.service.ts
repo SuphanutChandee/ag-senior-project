@@ -23,24 +23,16 @@ export class GoatsDetailsService {
 
   async update(gnum: string, updateGoatsDetailstDto: UpdateGoatsDetailstDto) {
     const put = await this.GoatsDetailsModel
-      .findOneAndUpdate({ gnum: gnum}, updateGoatsDetailstDto, { new: true })
-      /*.populate('gnum')
-      .populate('status')
-      .populate('unit')
-      .populate('gender')
-      .populate('gene')
-      .populate('birthDate')
-      .populate('bornWeight')
-      .populate('Fnum')
-      .populate('Fgene')
-      .populate('Mnum')
-      .populate('Mgene')
-      .populate('DD')
-      .populate('age')
-      .populate('behavior')
-      .populate('color')
-      .populate('predicts')
-      .populate('Activity')*/;
+      .findOneAndUpdate({ gnum: gnum}, updateGoatsDetailstDto, { new: true });
+    if (!put) {
+      throw new NotFoundException();
+    }
+    return put;
+  }
+
+  async updatePredict(gnum: string, updateGoatsDetailstDto: UpdateGoatsDetailstDto) {
+    const put = await this.GoatsDetailsModel
+      .findOneAndReplace({ gnum: gnum}, updateGoatsDetailstDto, { new: true });
     if (!put) {
       throw new NotFoundException();
     }

@@ -6,6 +6,9 @@ export type GoatInHousesListDocument = HydratedDocument<GoatInHousesList>;
 @Schema()
 export class GoatInHousesList {
   @Prop()
+  unit : number;
+  
+  @Prop()
   goat : {
     gnum: string;
     gender: string;

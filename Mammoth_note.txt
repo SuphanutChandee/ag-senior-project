@@ -23,3 +23,30 @@ node ./src/dataCollectSever.js
 node ./src/PostNPut.js
 
 node ./src/temp.js
+
+
+{
+    "predicts": [
+  {
+    "date": "2022-07-24",
+    "type": "เปลี่ยนอาหารข้น-หยาบ",
+    "details": "พีแลค ของ นวิทริไลน์",
+    "chance": "โอกาสต่ำ",
+    "color": "เหลือง"
+  },
+  {
+    "date": "2022-07-20",
+    "type": "ฉีดวัคซีน-จ่ายยา",
+    "details": "หมอสุชัยมาฉีดโบวิแลคให้",
+    "chance": "โอกาสต่ำ",
+    "color": "เหลือง"
+  },
+  {
+    "date": "2023-01-28",
+    "type": "ฉีดวัคซีน-จ่ายยา",
+    "details": "55555",
+    "chance":"โอกาสต่ำ",
+    "color": "เหลือง"
+  }
+]
+}

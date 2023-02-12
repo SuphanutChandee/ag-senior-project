@@ -45,11 +45,23 @@ function GoatReportPage () {
 
         const fetchData = async () => {
           // get the data from the api
-            const data = await fetch('http://localhost:3000/FindOneGoatDetails?gnum='+res);
+            let data = await fetch('http://localhost:3000/FindOneGoatDetails?gnum='+res);
             //fetch('http://localhost:3000/GoatsDetails').then(data => console.log(data.json()));
           // convert the data to json
-            const json = await data.json();
+            let json = await data.json();
           // set state with the result 
+            let temp =[];
+            console.log(json.predicts);
+            const color = ["แดง", "ฟ้า", "เหลือง"];
+            for (let i=0; i<3; i++){
+                for (let j=0; j<json.predicts.length; j++){
+                    if (json.predicts[j].color == color[i]){
+                        temp.push(json.predicts[j])
+                    }
+                }
+            }
+            json.predicts = temp;
+            console.log(json.predicts);
             setGoatDetails(json);
         }
         fetchData();

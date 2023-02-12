@@ -17,8 +17,14 @@ export class GoatsDetailsController {
   }
 
   @Put('updateGoatsDetails')
-  async updateEventList(@Query("gnum") gnum, @Body() put: UpdateGoatsDetailstDto ) {
+  async updateGoatDetails(@Query("gnum") gnum, @Body() put: UpdateGoatsDetailstDto ) {
     //console.log(put)
     return this.goatsDetailsService.update(gnum, put)
+  }
+
+  @Put('updatePredictGoatsDetails')
+  async updatePredictGoatDetails(@Query("gnum") gnum, @Body() put: UpdateGoatsDetailstDto ) {
+    //console.log(put)
+    return this.goatsDetailsService.updatePredict(gnum, put)
   }
 }

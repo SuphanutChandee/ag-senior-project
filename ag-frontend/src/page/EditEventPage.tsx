@@ -143,7 +143,7 @@ function EditEventPage () {
                         <option value="ย้ายคอก-โรงเรือน">ย้ายคอก-โรงเรือน</option>
                         <option value="ผสม">ผสม</option>
                         <option value="หย่านม">หย่านม</option>
-                        <option value="ฉีดวัคซีน">ฉีดวัคซีน</option>
+                        <option value="ฉีดวัคซีน-จ่ายยา">ฉีดวัคซีน-จ่ายยา</option>
                         <option value="คลอด">คลอด</option>
                         <option value="ผ่าตัด">ผ่าตัด</option>
                     </select>          
