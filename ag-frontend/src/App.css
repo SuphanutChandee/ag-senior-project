@@ -4,7 +4,7 @@
 
 body { 
   /*background-image: url("../../document_n_other/E7A7F914-2531-4B9C-B67B-83FFC5446AA8 3.png"); */
-  background-color: rgb(232, 248, 251);
+  background-color: #e8f8fb;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -146,6 +146,7 @@ body {
   font-size: 16px;
   justify-content: center;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .เหลือง {
@@ -157,6 +158,7 @@ body {
   font-size: 16px;
   justify-content: center;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .ฟ้า {
@@ -168,6 +170,7 @@ body {
   font-size: 16px;
   justify-content: center;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .แดง {
@@ -179,6 +182,64 @@ body {
   font-size: 16px;
   justify-content: center;
   cursor: pointer;
+  border-radius: 8px;
+}
+
+.แพะเขียว {
+  background-color: #5bc35f;
+  width: 90%;
+  margin-left: 5%;
+  border: none;
+  color: black;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.แพะเหลือง {
+  background-color: #b7c05c;
+  width: 90%;
+  margin-left: 5%;
+  border: none;
+  color: black;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.แพะฟ้า {
+  background-color: #099ecf;
+  width: 90%;
+  margin-left: 5%;
+  border: none;
+  color: black;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.แพะแดง {
+  background-color: #fa5347;
+  width: 90%;
+  margin-left: 5%;
+  border: none;
+  color: black;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.flexbetw {
+  display: grid ;
+  justify-content: center;
 }
 
 .centerDiv {
@@ -193,9 +254,123 @@ body {
   padding: 5px;
 }
 
-.OverviewHouses{
-  background-color: rgba(217, 217, 217, 0.7);
-  padding: 0.5%;
+.alert-adjustment-0 {
+  position: fixed;
+  bottom: 95%;
+  right: 0%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: rgb(244, 252, 255);
+  display: block;
+  width: 12%;
+  height: 4%;
+  border-radius: 8px;
+  font-size: 20px;
+  border: none;
+}
+.alert-adjustment-100 {
+  position: fixed;
+  bottom: 95%;
+  right: 0%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: rgb(212, 212, 212);
+  display: block;
+  width: 12%;
+  height: 4%;
+  border-radius: 8px;
+  font-size: 20px;
+  border: none;
+}
+.alert-adjustment-1 {
+  position: fixed;
+  bottom: 95%;
+  right: 0%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: #f3ff72;
+  display: block;
+  width: 12%;
+  height: 4%;
+  border-radius: 8px;
+  font-size: 20px;
+  border: none;
+}
+.alert-adjustment-2 {
+  position: fixed;
+  bottom: 95%;
+  right: 0%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: #07c1ff;
+  display: block;
+  width: 12%;
+  height: 4%;
+  border-radius: 8px;
+  font-size: 20px;
+  border: none;
+}
+.alert-adjustment-3 {
+  position: fixed;
+  bottom: 95%;
+  right: 0%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: #ff5448;
+  display: block;
+  width: 12%;
+  height: 4%;
+  border-radius: 8px;
+  font-size: 20px;
+  border: none;
+}
+
+.alert-button0 {
+  position: fixed;
+  bottom: 91.7%;
+  right: 1%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: rgb(212, 212, 212);
+  display: block;
+  width: 10%;
+  height: 3%;
+  border-radius: 2px;
+  border: none;
+  font-size: 16px;
+}
+.alert-button1 {
+  position: fixed;
+  bottom: 88.6%;
+  right: 1%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: #f3ff72;
+  display: block;
+  width: 10%;
+  height: 3%;
+  border-radius: 2px;
+  border: none;
+  font-size: 16px;
+}
+.alert-button2 {
+  position: fixed;
+  bottom: 85.5%;
+  right: 1%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: #07c1ff;
+  display: block;
+  width: 10%;
+  height: 3%;
+  border-radius: 2px;
+  border: none;
+  font-size: 16px;
+}
+.alert-button3 {
+  position: fixed;
+  bottom: 82.6%;
+  right: 1%; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: #ff5448;
+  display: block;
+  width: 10%;
+  height: 3%;
+  border-radius: 2px;
+  border: none;
+  font-size: 16px;
 }
 
 .EventSchedule {
@@ -250,6 +425,7 @@ body {
   bottom: 92%;
   margin-left: 88%;
   font-size: 24px;
+  border-radius: 8px;
 }
 
 .แก้ไขข้อมูลแพะ {
@@ -262,6 +438,7 @@ body {
   bottom: 85%;
   margin-left: 88%;
   font-size: 24px;
+  border-radius: 8px;
 }
 
 .gridSubThree {
@@ -278,6 +455,7 @@ body {
   display: block;
   font-size: 24px;
   margin: auto;
+  border-radius: 8px;
 }
 .ยืนยันแล้วกลับหน้าหลัก {
   background-color: rgb(244, 252, 255);
@@ -288,6 +466,7 @@ body {
   display: block;
   font-size: 24px;
   margin: auto;
+  border-radius: 8px;
 }
 .ยกเลิกแล้วกลับหน้าหลัก {
   background-color: rgb(244, 252, 255);
@@ -298,6 +477,7 @@ body {
   display: block;
   font-size: 24px;
   margin: auto;
+  border-radius: 8px;
 }
 
 
@@ -325,6 +505,7 @@ body {
   justify-content: center;
   cursor: pointer;
   margin-left: 2.5%;
+  border-radius: 8px;
 }
 
 .gridSubTwo {

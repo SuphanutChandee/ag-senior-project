@@ -36,7 +36,8 @@ const OverviewChart = () => {
 	];
 	
 	const options = {
-		colors: ['#4CAF50', '#a7af4c', '#008CBA' , '#f44336']
+		colors: ['#4CAF50', '#a7af4c', '#008CBA' , '#f44336'],
+		backgroundColor: 'f6fdfe'
 	};
 	
 	function Overviewpiechart() {

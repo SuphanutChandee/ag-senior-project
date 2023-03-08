@@ -242,6 +242,18 @@ async function GoatInHousesListUpdate(gnum, data) {
     }*/
 }
 
+async function AllActivityListUpdate(gnum, data) {
+    let url = "http://localhost:3000/updateAllActivityList?gnum=".concat("", gnum);
+
+    var XMLHttpRequest = require('xhr2');
+    let Http = new XMLHttpRequest();
+
+    Http.open("PUT", url);
+
+    Http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    Http.send(JSON.stringify(data));
+}
+
 function updateAndAleart (gnum, unit, GD, OHeader, OHouse, behavior) {
     GoatDetailsUpdate(gnum, GD);
     OverviewHeaderUpdate(OHeader);
@@ -305,7 +317,15 @@ function predictNupdate(gnum, bhlv, activityDiff){
         var temp = yearnow.toString() + "-" + monthnow.toString() + "-" + datenow.toString();
         let curdate = new Date(temp);
 
-        if (bhlv > 0){
+        if( activityDiff == 1000) {
+            date = "วันนี้";
+            type = "ชัก";
+            details = "ผิดปกติรุนแรงและฉับพลัน";
+            chance = "โอกาสสูง";
+            color = "แดง";
+            predict.push({date, type, details, chance, color});
+        }
+        else if (bhlv > 0){
             for (let i=0; i<EventList.length; i++){
                 const event = EventList[i];
                 let timePoint = 0;
@@ -373,6 +393,7 @@ function predictNupdate(gnum, bhlv, activityDiff){
 let lastgctDic = {};
 
 function analyze (device, lastActivity, sumActivity, zeroActivity){
+
     gnum = device;
     lastActivity = parseInt(lastActivity);
     sumActivity = parseInt(sumActivity);
@@ -387,7 +408,12 @@ function analyze (device, lastActivity, sumActivity, zeroActivity){
 
     let activityDiff = 0;
 
-    if (lastActivity >= 200){
+    if( lastActivity >= 300)
+    {
+        activityDiff = 1000;
+        lastgctDic.gnum = 30;
+    }
+    else if (lastActivity >= 200){
         activityDiff = 0;
         lastgctDic.gnum = 0;
     } 
@@ -494,6 +520,14 @@ function analyze (device, lastActivity, sumActivity, zeroActivity){
                     }
                     Activity[Activity.length-1] = sumActivity;
                     GoatDetailsUpdate(gnum, {"Activity": Activity});
+
+                    var datenow = new Date().getDate();
+                    var monthnow = new Date().getMonth() + 1;
+                    var yearnow = new Date().getFullYear();
+                    var temp = yearnow.toString() + "-" + monthnow.toString() + "-" + datenow.toString();
+                    let curdate = new Date(temp);
+
+                    AllActivityListUpdate(gnum, {"activitys" : { curdate : Activity }})
                 }
 
                 let total_ab = ((ablv[1]+ablv[2]+ablv[3]) / overviewHeader[0].total) * 100;

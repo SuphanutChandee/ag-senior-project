@@ -31,6 +31,8 @@ function GoatReportPage () {
         })
     const [gnum, setGnum] = useState("")
 
+    
+
     useEffect(() => {
         let temp = window.location.href
         //console.log(temp)
@@ -66,6 +68,8 @@ function GoatReportPage () {
         }
         fetchData();
     },[]);
+
+    
 
     function ActivityChart(a:Number, b:Number, c:Number, d:Number, e:Number, f:Number, g:Number):any {
 

@@ -49,18 +49,18 @@ const OverviewGoatHouses = ({}) => {
   };
 
   return (
-  <div className='OverviewHouses'>
+  <div>
     <h2 className='tab2'>โรงเรือน</h2>
     <div>
     {overviewHousesList.map((OverviewHouses, idx) => (
         <div key={idx} className="centerDivMorePadding">
-            <button onClick={(e) => buttonDropdownHandler(e, idx)} type="button" className={OverviewHouses.color}><h2 className='tab4'>Unit {OverviewHouses.unit} มีประชากร {OverviewHouses.total} ตัว แบ่งตามอาการได้เป็น : ปกติ {OverviewHouses.ablv0} ตัว : เล็กน้อย {OverviewHouses.ablv1} ตัว : ปานกลาง {OverviewHouses.ablv2} ตัว : รุนแรง {OverviewHouses.ablv3} ตัว</h2></button>
+            <button onClick={(e) => buttonDropdownHandler(e, idx)} type="button" className={OverviewHouses.color}><h2 className='tab4'>โรงเรือนที่ {OverviewHouses.unit} มีประชากร {OverviewHouses.total} ตัว แบ่งตามอาการได้เป็น : ปกติ {OverviewHouses.ablv0} ตัว : เล็กน้อย {OverviewHouses.ablv1} ตัว : ปานกลาง {OverviewHouses.ablv2} ตัว : รุนแรง {OverviewHouses.ablv3} ตัว</h2></button>
             { dropDown[idx] ? (
               <div>
                 {unitdata[idx].goat.map((unitdropdownlist, idx2) => (
                 <div key={idx2} className="centerDiv">
                   <form action={"/goat/"+unitdropdownlist.gnum}> 
-                    <button className={unitdropdownlist.color}><h2 className='tab4'>{unitdropdownlist.gnum} เพศ{unitdropdownlist.gender} {unitdropdownlist.status} อายุ {unitdropdownlist.age} ปี ({unitdropdownlist.behavior})</h2></button>
+                    <button className={"แพะ"+unitdropdownlist.color}><h2 className='tab4'>{unitdropdownlist.gnum} เพศ{unitdropdownlist.gender} {unitdropdownlist.status} อายุ {unitdropdownlist.age} ปี ({unitdropdownlist.behavior})</h2></button>
                   </form>    
                 </div>
                 ))}
